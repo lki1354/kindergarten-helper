@@ -1,1 +1,17 @@
-<ion-nav [root]="rootPage"></ion-nav>
+
+<ion-split-pane when="(min-width: 475px)">
+  <!--  our side menu  -->
+
+  <ion-menu id="m1" side="left" [content]="mycontent">
+      <ion-content> Menu 1 </ion-content>
+  </ion-menu>
+  <ion-menu id="m2" side="left" [content]="mycontent">
+    <ion-content>{{m2}}</ion-content>
+  </ion-menu>
+
+
+
+  <!-- the main content -->
+  <ion-nav [root]="rootPage" main #mycontent></ion-nav>
+</ion-split-pane>
+

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      Neues Kind hinzufügen
+    </ion-title>
+
+      <ion-buttons end>
+        <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
+      </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-textarea placeholder="Name" [(ngModel)]="name"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea placeholder="Kindergartenjahr" [(ngModel)]="years"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea placeholder="Bild" [(ngModel)]="avatar"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+
+  <button full ion-button color="secondary" (click)="saveChild()">Speichern</button>
+  <button full ion-button color="secondary" (click)="saveChildAndNew()">Speicher und Kind hinzufügen</button>
+
+</ion-content>
