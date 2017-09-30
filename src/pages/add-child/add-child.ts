@@ -17,7 +17,7 @@ import {DataProvider} from "../../providers/data/data";
 export class AddChildPage {
 
   name:string;
-  years:string;
+  years:number;
   avatar:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController) {
@@ -35,7 +35,7 @@ export class AddChildPage {
     this.view.dismiss( newChild );
   }
 
-  saveChildandNew(){
+  saveChildAndNew(){
   }
 
  close(){

@@ -17,6 +17,7 @@ import {DataProvider} from "../../providers/data/data";
 export class AddActivityPage {
 
   name:string;
+  character:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view:ViewController, public store:DataProvider) {
   }

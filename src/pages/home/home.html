@@ -22,22 +22,35 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
   <ion-list>
-		<ion-item *ngFor="let child of this.store.kids; let i=index;" (click)="viewChild(i)">
+		<ion-item-sliding *ngFor="let child of this.store.kids; let i=index;" > <!--(click)="viewChild(i)" -->
+      <ion-item>
     <ion-avatar item-start>
-      <img [src]="child.avatar">
+      <img [src]="child?.avatar">
     </ion-avatar>
-    <h2>{{child.name}}</h2>
-
-      <!--
-      <ion-fab right bottom>
-        <button ion-button color="first" (click)="deleteChild(child)"><ion-icon name="remove-circle"></ion-icon></button>
-      </ion-fab>
-      -->
-  </ion-item>
-</ion-list>
+    <h2>{{child?.name}}</h2>
+      <ion-note>Kindergartenjahr: {{child?.years}}.</ion-note>
+        </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="editChild(i)">
+          <ion-icon name="construct"></ion-icon>
+          Bearbeiten
+        </button>
+        <button ion-button color="primary" (click)="viewChild(i)">
+          <ion-icon name="person"></ion-icon>
+          Ansehen
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteChild(i)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
 
 

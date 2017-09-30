@@ -17,7 +17,7 @@ import {KidsPage} from "../kids/kids";
   templateUrl: 'home.html',
 })
 export class HomePage {
-
+   userCourse = [{CourseName:"course one"},{CourseName:"course two"}]
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public menuCtrl: MenuController, public store:DataProvider) {
     this.menuCtrl.enable(false, 'child');
     this.menuCtrl.enable(true, 'home');
@@ -45,6 +45,12 @@ export class HomePage {
     this.store.config.child_id_selected = child_index
     this.navCtrl.parent.select(1)
 
+  }
+  editChild(child_id:number){
+
+  }
+  deleteChild(child_id:number){
+    this.store.deleteChild(child_id)
   }
 
 }

@@ -19,7 +19,8 @@
     </ion-item>
 
     <ion-item>
-      <ion-textarea placeholder="Kindergartenjahr" [(ngModel)]="years"></ion-textarea>
+      <ion-label color="primary" floating>Kindergartenjahr</ion-label>
+      <ion-input type="number" min="0" max="3" [(ngModel)]="years"></ion-input>
     </ion-item>
 
     <ion-item>

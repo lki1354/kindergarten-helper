@@ -15,7 +15,16 @@
   <ion-list>
 
     <ion-item>
-      <ion-textarea placeholder="Name der Aktivität" [(ngModel)]="name"></ion-textarea>
+      <!--<ion-textarea placeholder="Name der Aktivität" [(ngModel)]="name"></ion-textarea>-->
+      <ion-label color="primary" floating>Name der Aktivität</ion-label>
+      <ion-input [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Eigenschaft</ion-label>
+        <ion-select [(ngModel)]="character"  interface="popover">
+          <ion-option *ngFor="let ch_name of this.store.character" [value]="ch_name">{{ch_name}}</ion-option>
+        </ion-select>
     </ion-item>
 
   </ion-list>

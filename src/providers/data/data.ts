@@ -12,11 +12,11 @@ import 'rxjs/add/operator/map';
 export class DataProvider {
 
   public config : {child_id_selected:number, character_id_selected:number, activitie_id_selected:number } = {child_id_selected:0,character_id_selected:0,activitie_id_selected:0}
-  public kids : Array<{name: string, years: string, avatar: string}>;
+  public kids : Array<{name: string, years: string, avatar: string}> = [];
   public character : Array<string> = [];
-  public character_data : Array<{id_child:number, id_character:number, note:string}>;
+  public character_data : Array<{id_child:number, id_character:number, note:string}>=[];
   public activities : Array<string> = [];
-  public activities_data : Array<{id_child:number, id_character:number, id_activity:number, rating:string, note:string}>;
+  public activities_data : Array<{id_child:number, id_character:number, id_activity:number, rating:string, note:string}>=[];
 
   constructor(public storage: Storage) {
 
@@ -65,6 +65,8 @@ export class DataProvider {
     this.saveKids()
     this.saveCharacter()
     this.saveActivities()
+    this.saveCharacterData()
+    this.saveActivitiesData()
   }
 
   private saveKids(){
@@ -88,8 +90,13 @@ export class DataProvider {
     this.storage.set('activities_data', newData);
   }
 
-  remove(key){
+  private remove(key){
     return this.storage.remove(key)
+  }
+
+  deleteChild(child_id:number){
+    this.kids.splice(child_id,1)
+    this.save()
   }
 
   addChild(name:string, years:string, avatar:string){
