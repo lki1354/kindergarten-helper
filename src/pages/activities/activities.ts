@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
+import {DataProvider} from "../../providers/data/data";
+import {AddActivityPage} from "../add-activity/add-activity";
 
 /**
  * Generated class for the ActivitiesPage page.
@@ -15,11 +17,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ActivitiesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public store:DataProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ActivitiesPage');
   }
+  addActivity(){
+    let addModal = this.modalCtrl.create(AddActivityPage);
 
+    addModal.onDidDismiss(( activity ) => {
+          if(activity){
+            this.store.addActivity(activity);
+          }
+    });
+
+    addModal.present();
+  }
+
+  editActivityOfChild(activity_id){
+
+  }
 }

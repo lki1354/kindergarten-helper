@@ -1,14 +1,70 @@
 
-<ion-split-pane when="(min-width: 475px)">
+<ion-split-pane when="(min-width: 500px)">
   <!--  our side menu  -->
 
-  <ion-menu id="m1" side="left" [content]="mycontent">
-      <ion-content> Menu 1 </ion-content>
-  </ion-menu>
-  <ion-menu id="m2" side="left" [content]="mycontent">
-    <ion-content>{{m2}}</ion-content>
+  <ion-menu id="home" side="left" [content]="mycontent">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+      <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p,p.arg)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
   </ion-menu>
 
+
+  <ion-menu id="child" side="left" [content]="mycontent">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Kinder</ion-title>
+    </ion-toolbar>
+  </ion-header>
+      <ion-content>
+    <ion-list>
+		  <ion-item menuClose *ngFor="let child of this.store.kids; let i=index;" (click)="showChild(i)">
+      <ion-avatar item-start>
+        <img [src]="child.avatar">
+      </ion-avatar>
+      <h2>{{child.name}}</h2>
+     </ion-item>
+   </ion-list>
+  </ion-content>
+  </ion-menu>
+
+  <ion-menu id="character" side="left" [content]="mycontent">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Eigenschaften</ion-title>
+    </ion-toolbar>
+  </ion-header>
+      <ion-content>
+    <ion-list>
+		  <ion-item menuClose *ngFor="let character of this.store.character; let i=index;" (click)="showCharacter(i)">
+      <h2>{{character}}</h2>
+     </ion-item>
+   </ion-list>
+  </ion-content>
+  </ion-menu>
+
+  <ion-menu id="activity" side="left" [content]="mycontent">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Activitäten</ion-title>
+    </ion-toolbar>
+  </ion-header>
+      <ion-content>
+    <ion-list>
+		  <ion-item menuClose *ngFor="let activity of this.store.activities; let i=index;" (click)="showActivity(i)">
+      <h2>{{activity}}</h2>
+     </ion-item>
+   </ion-list>
+  </ion-content>
+  </ion-menu>
 
 
   <!-- the main content -->

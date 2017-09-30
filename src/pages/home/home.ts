@@ -19,8 +19,8 @@ import {KidsPage} from "../kids/kids";
 export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public menuCtrl: MenuController, public store:DataProvider) {
-    this.menuCtrl.enable(false, 'm2');
-    this.menuCtrl.enable(true, 'm1');
+    this.menuCtrl.enable(false, 'child');
+    this.menuCtrl.enable(true, 'home');
   }
 
   ionViewDidLoad() {
@@ -42,7 +42,7 @@ export class HomePage {
   }
 
   viewChild(child_index:number){
-    this.navCtrl.parent.getByIndex(1).rootParams={child_id:child_index}
+    this.store.config.child_id_selected = child_index
     this.navCtrl.parent.select(1)
 
   }

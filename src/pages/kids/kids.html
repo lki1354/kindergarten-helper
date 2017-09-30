@@ -12,17 +12,13 @@
       <ion-icon name="list"></ion-icon>
     </button>
 
-    <ion-title>kids</ion-title>
+    <ion-title>
+      {{this.store.kids[this.store.config.child_id_selected].name}}
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<p>
-  id:{{selected_kid}}
-</p>
-  <p>
-  {{this.store.kids[0].name}}
-</p>
 </ion-content>

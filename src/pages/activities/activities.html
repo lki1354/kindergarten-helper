@@ -1,18 +1,35 @@
-<!--
-  Generated template for the ActivitiesPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>activities</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="list"></ion-icon>
+    </button>
+
+    <ion-title>{{this.store.actualActivity()}}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addActivity()"><ion-icon name="add-circle"></ion-icon></button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-card ion-item *ngFor="let child of this.store.kids; let ic = index" (click)="editCharacterOfChild(ic)">
+      <ion-card-header>
+       <h1> {{child.name}}</h1>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list ion-item *ngFor="let activity of this.store.getActivityOfChildActual(ic)">
+          <ion-item>{{activity.note}}</ion-item>
+        </ion-list>
+
+      </ion-card-content>
+    </ion-card>
+
+
 
 </ion-content>

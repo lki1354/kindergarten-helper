@@ -11,10 +11,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataProvider {
 
+  public config : {child_id_selected:number, character_id_selected:number, activitie_id_selected:number } = {child_id_selected:0,character_id_selected:0,activitie_id_selected:0}
   public kids : Array<{name: string, years: string, avatar: string}>;
-  public character : Array<string>;
+  public character : Array<string> = [];
   public character_data : Array<{id_child:number, id_character:number, note:string}>;
-  public activities : Array<string>;
+  public activities : Array<string> = [];
   public activities_data : Array<{id_child:number, id_character:number, id_activity:number, rating:string, note:string}>;
 
   constructor(public storage: Storage) {
@@ -49,6 +50,11 @@ export class DataProvider {
       }
     });
 
+    this.storage.get('config').then((config_stored) => {
+      if(config_stored){
+        this.config = JSON.parse(config_stored);
+      }
+    });
   }
 
   ionViewDidLoad() {
@@ -91,7 +97,11 @@ export class DataProvider {
     this.saveKids()
   }
   addCharacter(name:string){
-    this.character.push(name)
+    //if(this.character) {
+      this.character.push(name)
+    /*}else{
+      this.character = [name]
+    }*/
     this.saveCharacter()
   }
   addActivity(name:string){
@@ -104,10 +114,44 @@ export class DataProvider {
     this.saveCharacterData()
   }
 
-  insertActivity(id_child:number,id_activity:number, id_character:number, note:string){
-    this.character_data.push({id_child,id_character,note})
-    this.saveCharacterData()
+  insertActivity(id_child:number,id_activity:number, id_character:number,rating:string, note:string){
+    this.activities_data.push({id_child,id_activity,id_character,rating,note})
+    this.saveActivitiesData()
   }
 
+  actualCharacter(){
+      return this.character[this.config.character_id_selected]
+  }
 
+  getCharacterOfChild(child_id:number){
+    let data:Array<{id_child:number, id_character:number, note:string}>
+    if(this.character_data) {
+      data = this.character_data.filter((element) => {
+        return this.config.character_id_selected == element.id_character && child_id == element.id_child;
+      })
+    }
+    return data
+  }
+
+  actualActivity(){
+    return this.activities[this.config.activitie_id_selected]
+  }
+  getActivityOfChild(child_id:number){
+    let data:Array<{id_child:number, id_character:number, id_activity:number, rating:string, note:string}>
+    if(this.activities_data) {
+      data = this.activities_data.filter((element) => {
+        return this.config.character_id_selected == element.id_character && child_id == element.id_child;
+      })
+    }
+    return data
+  }
+  getActivityOfChildActual(child_id:number){
+    let data:Array<{id_child:number, id_character:number, id_activity:number, rating:string, note:string}>
+    if(this.activities_data) {
+      data = this.activities_data.filter((element) => {
+        return this.config.activitie_id_selected == element.id_activity && child_id == element.id_child;
+      })
+    }
+    return data
+  }
 }

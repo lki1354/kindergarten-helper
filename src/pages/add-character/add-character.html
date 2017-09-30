@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      Neue Eigenschaft hinzufügen
+    </ion-title>
+
+      <ion-buttons end>
+        <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
+      </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-textarea placeholder="Name der Eigenschaft" [(ngModel)]="name"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+
+  <button full ion-button color="secondary" (click)="saveCharacter()">Speichern</button>
+  <button full ion-button color="secondary" (click)="saveCharacterAndNew()">Speicher und neue Eigenschaft hinzufügen</button>
+
+</ion-content>

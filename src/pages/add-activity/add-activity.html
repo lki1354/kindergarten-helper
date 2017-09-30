@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      Neue Aktivität hinzufügen
+    </ion-title>
+
+      <ion-buttons end>
+        <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
+      </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-textarea placeholder="Name der Aktivität" [(ngModel)]="name"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+
+  <button full ion-button color="secondary" (click)="saveActivity()">Speichern</button>
+  <button full ion-button color="secondary" (click)="saveActivityAndNew()">Speicher und neue Aktivität hinzufügen</button>
+
+</ion-content>

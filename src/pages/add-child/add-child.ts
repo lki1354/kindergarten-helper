@@ -20,7 +20,7 @@ export class AddChildPage {
   years:string;
   avatar:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public dataService: DataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController) {
 
   }
   ionViewDidLoad(){

@@ -1,6 +1,6 @@
 <ion-tabs>
-    <ion-tab [root]="homeRoot"  tabTitle="Home" tabIcon="home"></ion-tab>
-    <ion-tab [root]="kidsRoot" [rootParams]="child_id"  tabTitle="Kids" tabIcon="people"></ion-tab>
-    <ion-tab [root]="characterRoot" tabTitle="Character" tabIcon="list-box"></ion-tab>
-    <ion-tab [root]="activitiesRoot" tabTitle="Activities" tabIcon="school"></ion-tab>
+    <ion-tab [root]="homeRoot" (ionSelect)="tabHomeSelected()"  tabTitle="Kinder" tabIcon="home"></ion-tab>
+    <ion-tab [root]="kidsRoot"  (ionSelect)="tabChildSelected()" tabTitle="Kind" tabIcon="person"></ion-tab>
+    <ion-tab [root]="characterRoot" (ionSelect)="tabCharacterSelected() "tabTitle="Eigenschaft" tabIcon="list-box"></ion-tab>
+    <ion-tab [root]="activitiesRoot" (ionSelect)="tabActivitySelected()" tabTitle="Aktivität" tabIcon="school"></ion-tab>
 </ion-tabs>

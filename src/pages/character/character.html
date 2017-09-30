@@ -7,12 +7,40 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>character</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="list"></ion-icon>
+    </button>
+
+    <ion-title>{{this.store.actualCharacter()}}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addCharacter()"><ion-icon name="add-circle"></ion-icon></button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-card ion-item *ngFor="let child of this.store.kids; let ic = index" (click)="editCharacterOfChild(ic)">
+      <ion-card-header>
+       <h1> {{child.name}}</h1>
+      </ion-card-header>
+      <ion-card-content>
+        <h2>Eigenschaften</h2>
+        <ion-list ion-item *ngFor="let character of this.store.getCharacterOfChild(ic)">
+          <ion-item>{{character.note}}</ion-item>
+        </ion-list>
+        <h2>Aktivitäten</h2>
+        <ion-list ion-item *ngFor="let activity of this.store.getActivityOfChild(ic)">
+          <ion-item>{{activity.note}}</ion-item>
+        </ion-list>
+
+      </ion-card-content>
+    </ion-card>
+
+
 
 </ion-content>

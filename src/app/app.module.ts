@@ -13,6 +13,8 @@ import {ActivitiesPage} from "../pages/activities/activities";
 import { DataProvider } from '../providers/data/data';
 import {AddChildPage} from "../pages/add-child/add-child";
 import {IonicStorageModule} from "@ionic/storage";
+import {AddCharacterPage} from "../pages/add-character/add-character";
+import {AddActivityPage} from "../pages/add-activity/add-activity";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {IonicStorageModule} from "@ionic/storage";
     CharacterPage,
     ActivitiesPage,
     TabsPage,
-    AddChildPage
+    AddChildPage,
+    AddCharacterPage,
+    AddActivityPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,9 @@ import {IonicStorageModule} from "@ionic/storage";
     CharacterPage,
     ActivitiesPage,
     TabsPage,
-    AddChildPage
+    AddChildPage,
+    AddCharacterPage,
+    AddActivityPage
   ],
   providers: [
     StatusBar,

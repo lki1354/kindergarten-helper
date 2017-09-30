@@ -15,16 +15,19 @@ import {DataProvider} from "../../providers/data/data";
   templateUrl: 'kids.html',
 })
 export class KidsPage {
-  public selected_kid = 0
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public  menuCtrl: MenuController, public store:DataProvider) {
-    this.menuCtrl.enable(false, 'm1');
-    this.menuCtrl.enable(true, 'm2');
-    this.selected_kid = navParams.get('child_id');
+    this.menuCtrl.enable(false, 'home');
+    this.menuCtrl.enable(true, 'child');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad KidsPage');
   }
+  ionSelected(){
+    this.menuCtrl.enable(false, 'home');
+    this.menuCtrl.enable(true, 'child');
+  }
+
 
 }
