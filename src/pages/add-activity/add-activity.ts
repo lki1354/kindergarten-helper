@@ -17,7 +17,7 @@ import {DataProvider} from "../../providers/data/data";
 export class AddActivityPage {
 
   name:string;
-  character:string;
+  character_id:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view:ViewController, public store:DataProvider) {
   }
@@ -26,11 +26,11 @@ export class AddActivityPage {
     console.log('ionViewDidLoad AddActivityPage');
   }
   saveActivity(){
-    this.view.dismiss( this.name );
+    this.view.dismiss( {name:this.name,ch_id:this.character_id} );
   }
 
   saveActivityAndNew(){
-    this.store.addActivity(this.name);
+    this.store.addActivity(this.name,this.character_id);
   }
 
  close(){

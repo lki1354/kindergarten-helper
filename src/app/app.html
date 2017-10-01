@@ -26,7 +26,7 @@
   </ion-header>
       <ion-content>
     <ion-list>
-		  <ion-item menuClose *ngFor="let child of this.store.kids; let i=index;" (click)="showChild(i)">
+		  <ion-item menuClose *ngFor="let child of this.store.kids" (click)="showChild(child.id)">
       <ion-avatar item-start>
         <img [src]="child.avatar">
       </ion-avatar>
@@ -44,8 +44,8 @@
   </ion-header>
       <ion-content>
     <ion-list>
-		  <ion-item menuClose *ngFor="let character of this.store.character; let i=index;" (click)="showCharacter(i)">
-      <h2>{{character}}</h2>
+		  <ion-item menuClose *ngFor="let character of this.store.character" (click)="showCharacter(character.id)">
+      <h2>{{character.name}}</h2>
      </ion-item>
    </ion-list>
   </ion-content>
@@ -59,8 +59,8 @@
   </ion-header>
       <ion-content>
     <ion-list>
-		  <ion-item menuClose *ngFor="let activity of this.store.activities; let i=index;" (click)="showActivity(i)">
-      <h2>{{activity}}</h2>
+		  <ion-item menuClose *ngFor="let activity of this.store.activities" (click)="showActivity(activity.id)">
+      <h2>{{activity.name}}</h2>
      </ion-item>
    </ion-list>
   </ion-content>

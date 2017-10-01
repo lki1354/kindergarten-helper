@@ -22,8 +22,8 @@
 
     <ion-item>
       <ion-label color="primary">Eigenschaft</ion-label>
-        <ion-select [(ngModel)]="character"  interface="popover">
-          <ion-option *ngFor="let ch_name of this.store.character" [value]="ch_name">{{ch_name}}</ion-option>
+        <ion-select [(ngModel)]="character_id"  interface="popover">
+          <ion-option *ngFor="let character of this.store.character" (value)="character.id">{{character.name}}</ion-option>
         </ion-select>
     </ion-item>
 

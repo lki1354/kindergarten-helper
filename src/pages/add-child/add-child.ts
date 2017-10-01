@@ -18,7 +18,7 @@ export class AddChildPage {
 
   name:string;
   years:number;
-  avatar:string;
+  avatar:string ='assets/img/kids/bear.jpg';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController) {
 

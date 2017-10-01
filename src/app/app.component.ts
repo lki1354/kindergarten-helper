@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import {Platform, NavController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -23,7 +23,7 @@ export class MyApp {
       this.pages = [
          { title: 'Einstellungen', component: null,arg: null },
          { title: 'Vorlage', component:  null,arg: null},
-         { title: 'Löschen', component: null, arg: {deleteAll: true} }
+         { title: 'Alles löschen', component: null, arg: {deleteAll: true} }
     ];
 
 
@@ -32,17 +32,24 @@ export class MyApp {
 
   openPage(p,arg){
 
+    if(arg.deleteAll == true){
+      this.store.deleteAll();
+    }
+
   }
 
   showChild(child_id:number){
     this.store.config.child_id_selected = child_id
+    this.store.saveConfig()
   }
 
   showCharacter(character_id:number){
     this.store.config.character_id_selected = character_id
+    this.store.saveConfig()
   }
   showActivity(activity_id:number){
     this.store.config.activitie_id_selected = activity_id
+    this.store.saveConfig()
   }
 
 }

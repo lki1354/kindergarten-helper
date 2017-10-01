@@ -5,7 +5,7 @@
       <ion-icon name="list"></ion-icon>
     </button>
 
-    <ion-title>{{this.store.actualActivity()}}</ion-title>
+    <ion-title>{{this.store.actualActivity().name}}</ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="addActivity()"><ion-icon name="add-circle"></ion-icon></button>
@@ -16,19 +16,24 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-  <ion-card ion-item *ngFor="let child of this.store.kids; let ic = index" (click)="editCharacterOfChild(ic)">
-      <ion-card-header>
-       <h2> {{child.name}}</h2>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list ion-item *ngFor="let activity of this.store.getActivityOfChildActual(ic)">
-          <ion-item>{{activity.note}}</ion-item>
-        </ion-list>
+  <ion-card *ngFor="let child of this.store.kids; let i = index">
+    <ion-title text-center>{{child.name}}</ion-title>
 
-      </ion-card-content>
-    </ion-card>
+    <!--<ion-card-header> {{this.store.getActivityOfChild(ic)}}</ion-card-header>-->
+      <ion-item>
+        <ion-label floating>Notiz</ion-label>
+        <ion-input type="text" [(ngModel)]="actual_note[child.id.toString()]"> </ion-input>
+      </ion-item>
+
+        <ion-segment [(ngModel)]="actual_rating[child.id.toString()]" color="primary" >
+          <ion-segment-button  *ngFor="let rating of this.store.ratings" [value]="rating.id"  (ionSelect)="changeRating(child.id,rating.id)" >
+            <ion-icon name="{{rating.icon}}"></ion-icon>
+          </ion-segment-button>
+        </ion-segment>
+      <h3 text-center> Bewertung: {{this.store.actualRatingOfChildActivity(child.id)}} </h3>
+  </ion-card>
 
 
 
